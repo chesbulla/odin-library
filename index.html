@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="library.js" defer></script>
+
+</head>
+<body>
+    <form>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br><br>
+
+        <label for="noOfPages">Number of Pages:</label>
+        <input type="tel" id="noOfPages" name="noOfPages" required><br><br>
+
+        <fieldset>
+            <legend>Did you read the book?</legend>
+
+            <label for="yes">Yes</label>
+            <input type="radio" id="yes" name="isRead" value="true"><br>
+
+            <label for="no">No</label>
+            <input type="radio" id="no" name="isRead" value=""><br>
+
+
+        </fieldset>
+        
+        
+        <br>
+        <button id="addNewBook">NEW BOOK</button>
+
+
+    </form>
+
+    
+    <div class="myLibrary">
+
+
+    </div>
+
+    
+</body>
+</html>
+
