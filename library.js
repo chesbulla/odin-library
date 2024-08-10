@@ -30,6 +30,15 @@ function deleteBookFromLibrary(index) {
 
 }
 
+function toggleBookRead(index) {
+    myLibrary[index].isRead =  myLibrary[index].isRead ? false : true;
+    let book = document.querySelector(".book-" + String(index));
+    let info = book.querySelector("p");
+    info.textContent = myLibrary[index].info();
+    
+
+}
+
 function displayLibrary(){
     let library = document.querySelector(".myLibrary");
     while (library.firstChild) {
@@ -43,19 +52,30 @@ function displayLibrary(){
         let book = document.createElement("div");
         book.classList.add("book-" + String(i));
         let info = document.createElement("p");
-        let button = document.createElement("button");
-        button.textContent = "Delete book";
+        let buttonDelete = document.createElement("button");
+        let buttonToggle = document.createElement("button");
 
+        buttonDelete.textContent = "Delete book";
+        buttonToggle.textContent = "Toggle read status";
         info.textContent = myLibrary[i].info();
-        button.addEventListener("click", () => {
+
+        buttonDelete.addEventListener("click", () => {
                                             deleteBookFromLibrary(i);
                                             console.table(myLibrary);
                                         
 
         });
 
+        buttonToggle.addEventListener("click", () => {
+            toggleBookRead(i);
+            console.table(myLibrary);
+        
+
+        });
+
         book.appendChild(info);
-        book.appendChild(button);
+        book.appendChild(buttonDelete);
+        book.appendChild(buttonToggle);
         library.appendChild(book);
 
     }
@@ -76,6 +96,8 @@ button.addEventListener("click", (event) => {
                                     if (data.author.trim() === "") return;
                                     if (data.noOfPages.trim() === "") return;
                                     if (data.isRead === undefined) return;
+
+                                    data.isRead = data.isRead ? true : false;
                                     
                                     addBookToLibrary(data);
                                     displayLibrary(); 
